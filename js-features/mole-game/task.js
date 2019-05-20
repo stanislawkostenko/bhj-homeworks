@@ -1,20 +1,24 @@
-const hole = document.getElementsByClassName('hole');
-const holeOnclick = document.getElementsByClassName('hole_has-mole');
 const hit = document.getElementById('dead');
 const miss = document.getElementById('lost');
 
-if (hole.onclick == holeOnclick) {
-  hit.textcontent += 1;
-  if (hit.textcontent == 10) {
-    alert('Выь победили!');
-    hit.textcontent = 0;
-    miss.textcontent = 0;
+const setToZero = function() {
+  hit.textContent = 0;
+  miss.textContent = 0;
+}
+
+const checkHole = function(hole) {
+  if (hole.target.classList.contains('hole_has-mole')) {
+    hit.textContent = parseInt(hit.textContent) + 1;;
+  } else {
+    miss.textContent = parseInt(miss.textContent) + 1;
   }
-} else {
-  miss.textcontent += 1;
-  if (miss.textcontent == 10) {
-    alert('Выь проиграли!');
-    hit.textcontent = 0;
-    miss.textcontent = 0;
+  if (hit.textContent == 10) {
+    alert('Вы победили!');
+    setToZero();
+  } else if (miss.textContent == 5) {
+    alert('Вы проиграли!');
+    setToZero();
   }
 }
+
+onclick = checkHole;
