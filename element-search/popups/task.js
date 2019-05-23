@@ -1,12 +1,11 @@
-//const openPopup = document.getElementById('modal_main').classList.add('modal_active');
-const openPopup = document.getElementById('modal_main');
-openPopup.className = 'modal modal_active';
-const closeButton = document.getElementsByClassName('modal__close');
+const firstPopup = document.getElementById('modal_main');
+firstPopup.className = 'modal modal_active';
 
-const closePopup = function() {
-    //const penPopup = document.getElementById('modal_main').classList.remove('modal_active');
-    openPopup.className = 'modal';
-}
-closeButton.onclick = closePopup;
+const successPoppup = document.getElementById('modal_success');
 
-//НЕ МОГУ ПОНЯТЬ КАК ЗАКРЫТЬ ОКНО. ДОЛГО ПЫТАЛСЯ, НИЧЕГО НЕ ПОМОГЛО. ЗАПУТАЛСЯ
+const secondPopup = document.querySelector('div a.btn_danger');
+secondPopup.onclick = function () { successPoppup.className = 'modal modal_active'; }
+
+const closePopup = document.getElementsByClassName('modal__close_times');
+closePopup[0].onclick = function () { firstPopup.className = 'modal'; }
+closePopup[1].onclick = function () { successPoppup.className = 'modal'; firstPopup.className = 'modal'; }
