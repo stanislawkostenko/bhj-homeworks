@@ -1,7 +1,13 @@
-const menuItem = document.getElementsByClassName('menu_sub').add(menu_active);
-//menuItem.className = 'menu menu_sub menu_active';
-const linkItem = document.getElementsByClassName('menu__link');
+const menuItems = document.getElementsByClassName('menu_sub');
+const linkItems = Array.from(document.querySelectorAll('li a.menu__link'));
 
-menuItem.onclick;
+linkItems[1].onclick = () => { menuItems[0].className = 'menu menu_sub menu_active';
+                               menuItems[1].className = 'menu menu_sub';
+                               return false;
+                             }
 
-//СНОВА ЗАПУТАЛСЯ. ПО ИДЕЕ ДОЛЖНО ПОЯВЛЯТЬСЯ ПОДМЕНЮ НО ОНО НЕ ПОЯВЛЯЕТСЯ И Я НЕ ПОНИМАЮ ПОЧЕМУ. НЕ МОГУ ПОКА ДАЛЬШЕ ВЫПОЛНЯТЬ ЗАДАНИЕ...
+
+linkItems[5].onclick = () => { menuItems[1].className = 'menu menu_sub menu_active';
+                               menuItems[0].className = 'menu menu_sub';
+                               return false;
+                             }
