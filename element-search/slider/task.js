@@ -1,91 +1,22 @@
-const slider = Array.from(document.querySelectorAll('.slider__item'));
-const arrowBtn = Array.from(document.querySelectorAll('.slider__arrow'));
-const dottBtn = Array.from(document.querySelectorAll('.slider__dot'));
+const arrowBtnLt = document.getElementsByClassName('slider__arrow_prev').item(0);
+const arrowBtnRt = document.getElementsByClassName('slider__arrow_next').item(0);
 
-arrowBtn[1].onclick = () => {
-  if (slider[0].className === 'slider__item slider__item_active') {
-    slider[0].className = 'slider__item';
-    slider[1].className = 'slider__item slider__item_active';
-  } else if (slider[1].className === 'slider__item slider__item_active') {
-    slider[1].className = 'slider__item';
-    slider[2].className = 'slider__item slider__item_active';
-  } else if (slider[2].className === 'slider__item slider__item_active') {
-    slider[2].className = 'slider__item';
-    slider[3].className = 'slider__item slider__item_active';
-  } else if (slider[3].className === 'slider__item slider__item_active') {
-    slider[3].className = 'slider__item';
-    slider[4].className = 'slider__item slider__item_active';
-  } else if (slider[4].className === 'slider__item slider__item_active') {
-    slider[4].className = 'slider__item';
-    slider[0].className = 'slider__item slider__item_active';
+arrowBtnLt.onclick = function () {
+  const slider = document.getElementsByClassName('slider__item slider__item_active').item(0);
+  if (slider.previousElementSibling) {
+    slider.previousElementSibling.classList.add('slider__item_active');
+  } else {
+    slider.parentElement.lastElementChild.classList.add('slider__item_active');
   }
+  slider.classList.remove('slider__item_active');
 }
 
-arrowBtn[0].onclick = () => {
-  if (slider[0].className === 'slider__item slider__item_active') {
-    slider[0].className = 'slider__item';
-    slider[4].className = 'slider__item slider__item_active';
-  } else if (slider[4].className === 'slider__item slider__item_active') {
-    slider[4].className = 'slider__item';
-    slider[3].className = 'slider__item slider__item_active';
-  } else if (slider[3].className === 'slider__item slider__item_active') {
-    slider[3].className = 'slider__item';
-    slider[2].className = 'slider__item slider__item_active';
-  } else if (slider[2].className === 'slider__item slider__item_active') {
-    slider[2].className = 'slider__item';
-    slider[1].className = 'slider__item slider__item_active';
-  } else if (slider[1].className === 'slider__item slider__item_active') {
-    slider[1].className = 'slider__item';
-    slider[0].className = 'slider__item slider__item_active';
+arrowBtnRt.onclick = function () {
+  const slider = document.getElementsByClassName('slider__item slider__item_active').item(0);
+  if (slider.nextElementSibling) {
+    slider.nextElementSibling.classList.add('slider__item_active');
+  } else {
+    slider.parentElement.firstElementChild.classList.add('slider__item_active');
   }
-}
-
-dottBtn[0].onclick = () => {
-  if (slider[0].className !== 'slider__item slider__item_active') {
-    slider[0].className = 'slider__item slider__item_active';
-    slider[1].className = 'slider__item';
-    slider[2].className = 'slider__item';
-    slider[3].className = 'slider__item';
-    slider[4].className = 'slider__item';
-  }
-}
-
-dottBtn[1].onclick = () => {
-  if (slider[1].className !== 'slider__item slider__item_active') {
-    slider[1].className = 'slider__item slider__item_active';
-    slider[2].className = 'slider__item';
-    slider[3].className = 'slider__item';
-    slider[4].className = 'slider__item';
-    slider[0].className = 'slider__item';
-  }
-}
-
-dottBtn[2].onclick = () => {
-  if (slider[2].className !== 'slider__item slider__item_active') {
-    slider[2].className = 'slider__item slider__item_active';
-    slider[3].className = 'slider__item';
-    slider[4].className = 'slider__item';
-    slider[0].className = 'slider__item';
-    slider[1].className = 'slider__item';
-  }
-}
-
-dottBtn[3].onclick = () => {
-  if (slider[3].className !== 'slider__item slider__item_active') {
-    slider[3].className = 'slider__item slider__item_active';
-    slider[4].className = 'slider__item';
-    slider[0].className = 'slider__item';
-    slider[1].className = 'slider__item';
-    slider[2].className = 'slider__item';
-  }
-}
-
-dottBtn[4].onclick = () => {
-  if (slider[4].className !== 'slider__item slider__item_active') {
-    slider[4].className = 'slider__item slider__item_active';
-    slider[0].className = 'slider__item';
-    slider[1].className = 'slider__item';
-    slider[2].className = 'slider__item';
-    slider[3].className = 'slider__item';
-  }
+  slider.classList.remove('slider__item_active');
 }
