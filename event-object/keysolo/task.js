@@ -25,15 +25,16 @@ class Game {
       При неправильном вводе символа - this.fail();
      */
 
-     const symbol = this.currentSymbol;
-     symbol.addEventListener('keydown', (event) => {
-       if (symbol == event.key) {
-         this.success();
-       } else {
-         this.fail();
-       }
+     document.addEventListener('keydown', event => {
+         const screenLetter = this.currentSymbol.textContent.toLowerCase().charCodeAt(0);
+         const userLetter = event.key.toLowerCase().charCodeAt(0);
+         if (screenLetter === userLetter) {
+             this.success();
+         } else {
+             this.fail();
+         }
      });
-     
+
 
   }
 
