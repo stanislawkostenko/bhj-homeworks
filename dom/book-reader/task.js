@@ -1,41 +1,25 @@
-const text = document.getElementById('book');
-const button = Array.from(document.querySelectorAll('.font-size'));
+const book = document.querySelector('.book');
+const controls = document.querySelector('.book__control');
+const sizes = document.querySelectorAll('.font-size');
 
-button[0].onclick = () => {
-  if (button[0].classList.contains('font-size font-size_small font-size_active')) {
-    return false;
-  } else {
-    text.classList.remove('book_fs-big');
-    text.classList.add('book_fs-small');
-    button[0].classList.add('font-size_active');
-    button[1].classList.remove('font-size_active');
-    button[2].classList.remove('font-size_active');
-  }
-  return false;
+function changeSize(event) {
+    event.preventDefault();
+    if (event.target.dataset.size === 'big') {
+        book.classList.add('book_fs-big');
+        book.classList.remove('book_fs-small');
+    } else if (event.target.dataset.size === 'small') {
+        book.classList.add('book_fs-small');
+        book.classList.remove('book_fs-big');
+    } else {
+        book.classList.remove('book_fs-small');
+        book.classList.remove('book_fs-big');
+    }
+
+    for (let size of sizes) {
+        size.classList.remove('font-size_active');
+    }
+    event.target.classList.add('font-size_active');
 }
-
-button[1].onclick = () => {
-  if (button[1].classList.contains('font-size font-size_small font-size_active')) {
-    return false;
-  } else {
-    text.classList.remove('book_fs-small');
-    text.classList.remove('book_fs-big');
-    button[1].classList.add('font-size_active');
-    button[0].classList.remove('font-size_active');
-    button[2].classList.remove('font-size_active');
-  }
-  return false;
-}
-
-button[2].onclick = () => {
-  if (button[2].classList.contains('font-size font-size_small font-size_active')) {
-    return false;
-  } else {
-    text.classList.remove('book_fs-small');
-    text.classList.add('book_fs-big');
-    button[2].classList.add('font-size_active');
-    button[1].classList.remove('font-size_active');
-    button[0].classList.remove('font-size_active');
-  }
-  return false;
+for (let control of controls.children) {
+    control.addEventListener('click', changeSize);
 }
