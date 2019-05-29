@@ -1,19 +1,18 @@
 const adversity = document.querySelectorAll('.rotator__case');
+let counter = 1;
 
-const changeAds = function() {
-    const parentElement = document.querySelector('.rotator');
-    for (let el of adversity) {
-        if (parentElement.firstElementChild.classList.contains('rotator__case_active')) {
-            parentElement.firstElementChild.classList.remove('rotator__case_active');
-            parentElement.firstElementChild.nextElementSibling.classList.add('rotator__case_active');
-        } else if (el.classList.contains('rotator__case_active')) {
-            el.classList.remove('rotator__case_active');
-            //el.nextElementSibling.classList.add('rotator__case_active');
-        } else if (parentElement.lastElementChild.classList.contains('rotator__case_active')) {
-            parentElement.lastElementChild.classList.remove('rotator__case_active');
-            parentElement.firstElementChild.classList.add('rotator__case_active');
-        }
-    }
+const changeAds = function(adversity) {
+    setInterval(() => {
+        for (let i = 0; i < adversity.length; i++) {
+            for (let l = 0; l < adversity.length; l++) {
+                adversity[l].classList.remove('rotator__case_active');
+
+			      }
+			      adversity[counter].classList.add('rotator__case_active');
+
+		    }
+		    counter++;
+    }, 1000);
 }
 
-setInterval(1000, changeAds());
+changeAds(adversity);
