@@ -1,10 +1,11 @@
-const interest = Array.from(document.querySelectorAll('.interest__check'));
+const interests = document.querySelectorAll('.interest__check');
 
-interest.addEventListener('click', () => {
-    for (let i of interest) {
-        if (interest.checked) {
-            interest.children.checked = true;
-        }
-
-    }
-});
+for (let i = 0; i < interests.length; i++) {
+    interests[i].addEventListener('click', () => {
+        const parent = interests[i].closest('li');
+        const highTree = parent.childNodes[3].childNodes[1].childNodes[1].childNodes[1];
+        highTree.checked = interests[i].checked;
+        const lowTree = parent.childNodes[3].childNodes[3].childNodes[1].childNodes[1];
+        lowTree.checked = interests[i].checked;
+    });
+}
